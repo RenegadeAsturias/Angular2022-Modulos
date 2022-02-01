@@ -58,14 +58,36 @@ import { EmpleadosComponent } from './empleados/empleados.components';
 <app-empleados-component></app-empleados-component>
 
 
+7º Crear un Componte con CLI (Command Line Interface)
+renegade@MiPC:~/proyectos/Angular2022/modulos$ ng generate component empleado
+renegade@MiPC:~/proyectos/Angular2022/modulos$ ng g c empleado (Abreviado)
 
-7º Creo el Proyecto en GitHub
+Se crean los ficheros que generamos manualmente en el ejemplo anterior automáticamente
+y se añade a la lista de componentes en: app.module.ts
+
+import { EmpleadoComponent } from './empleado/empleado.component';
+
+@NgModule({
+  declarations: [
+    AppComponent, EmpleadosComponent, EmpleadoComponent
+
+
+8º Añadimos el Componente a nuestra aplicacion en el fichero: src\app\empleados.components.html
+es decir, dentro del objeto padre que habíamos creado previamente.
+
+<h1 style="text-align: center;">Empleados de la empresa</h1>
+
+<app-empleado></app-empleado> ..................... Puedo añadir/reutilizar el módulo tantas veces como quiera
+<app-empleado></app-empleado>
+
+
+9º Creo el Proyecto en GitHub
 Y añado en git un remoto para subir el proyecto
 
 renegade@MiPC:~/proyectos/Angular2022/modulos$ git remote add modulos https://github.com/RenegadeAsturias/Angular2022-Modulos.git
 
 
-8º Subo los cambios a GitHub
+10º Subo los cambios a GitHub
 
 renegade@MiPC:~/proyectos/Angular2022/modulos$ git push modulos master
 
