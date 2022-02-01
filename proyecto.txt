@@ -1,0 +1,80 @@
+
+1º Para crear el proyecto:
+
+renegade@MiPC:~/proyectos/Angular2022$ ng new modulos
+? Would you like to add Angular routing? No
+? Which stylesheet format would you like to use? CSS
+...
+
+
+2º Para ejecutar el proyecto:
+
+renegade@MiPC:~/proyectos/Angular2022/modulos$ ng serve
+
+
+3º Para ver la aplicación en el navegador:
+
+http://localhost:4200/
+
+
+4º Creamos un componente: 'empleadosComponent'
+
+Añadimos la carpeta en: src\app\empleados
+
+Y creamos los ficheros:
+
+empleados.components.ts ................ Creamos la Clase + Decorador para el componente: 'empleadosComponent'
+
+
+import { Component } from "@angular/core";
+
+@Component ({
+    selector: 'app-empleados-component',
+    templateUrl: './empleados.components.html',
+    styleUrls: ['./empleados.component.css']
+})
+
+export class EmpleadosComponent {
+
+}
+
+
+
++ empleados.components.html
++ empleados.components.css
+
+5º Registramos el componente en el fichero: src\app\app.module.ts
+
+import { EmpleadosComponent } from './empleados/empleados.components';
+
+@NgModule({
+  declarations: [
+    AppComponent, EmpleadosComponent
+
+
+6º Añadimos el Componente a nuestra aplicacion en el fichero: src\app\app.components.html
+
+<h1>{{ title }}</h1> aplicación Angular con módulos
+<app-empleados-component></app-empleados-component>
+
+
+
+7º Creo el Proyecto en GitHub
+Y añado en git un remoto para subir el proyecto
+
+renegade@MiPC:~/proyectos/Angular2022/modulos$ git remote add modulos https://github.com/RenegadeAsturias/Angular2022-Modulos.git
+
+
+8º Subo los cambios a GitHub
+
+renegade@MiPC:~/proyectos/Angular2022/modulos$ git push modulos master
+
+
+
+
+
+
+
+
+
+
