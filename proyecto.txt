@@ -92,7 +92,38 @@ renegade@MiPC:~/proyectos/Angular2022/modulos$ git remote add modulos https://gi
 renegade@MiPC:~/proyectos/Angular2022/modulos$ git push modulos master
 
 
+// ******************************************************************************************
 
+Definir un componente inline:
+
+Antes teníamos estas líneas que sustituiremos:
+  templateUrl: './empleado.component.html',
+  styleUrls: ['./empleado.component.css']
+
+¡Ojo! que podremos borrar los ficheros que no se utilizan.
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-empleado',
+  template: '<p>Empleado...</p>', ...............añadimos el Html del componente
+  styles: ['p{background-color:red;'] ...........añadimos el CSS del componente
+})
+export class EmpleadoComponent implements OnInit {
+  ...
+}
+
+// ******************************************************************************************
+
+Definir un componente inline utilizando CLI:
+
+Parámetro: -s ................ Estilos inline
+Parámetro: -t ................ Template inline
+
+Crear un Componte con CLI (Command Line Interface) inline
+renegade@MiPC:~/proyectos/Angular2022/modulos$ ng generate component -s -t ejemplo
+renegade@MiPC:~/proyectos/Angular2022/modulos$ ng g c ejemplo -s -t (Abreviado)
 
 
 
