@@ -1,0 +1,64 @@
+
+1º Interpolación {{}} en Angular al detalle
+
+Añadimos unas propiedades a la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+  nombre = "Juan";
+  apellido = "Díaz";
+  edad = 18;
+  empresa = "RPS"
+
+2º Interpolamos los datos en la plantilla del Empleado (en empleado.component.html)
+
+<h1 style="text-align: center;">Empleado!</h1>
+<p>Nombre del empleado: {{nombre}}</p>
+<p>Apellido del empleado: {{apellido}}</p>
+<p>Edad del empleado: {{edad}}</p>
+<p>Empresa del empleado: {{empresa}}</p>
+
+3º En la interpolación podemos utilizar expresiones, por ejemplo:
+
+<p>Edad del empleado: {{edad+10}}</p>
+
+4º Más opciones:
+
+export class EmpleadoComponent implements OnInit {
+  private edad = 18;
+  getEdad(){
+    return this.edad;
+  }
+
+Y ahora en el template:
+<p>Edad del empleado: {{getEdad()}}</p>
+
+
+
+5º Vamos a crear un campo de entrada para darle valor a una etiquta del template
+Y que los datos de la etiquita se actualicen con el valor introducido en el input text
+cuando hagas clic en el botón con el evento click.
+
+p>Direccción del empleado: {{direccion.value}}</p>
+
+Introduce la dirección: <input type="text" #direccion>
+
+<br/>
+<input type="button" value="Haz clic!" (click)="llamaDireccion(direccion.value)" />
+
+
+
+
+6º Vamos a crear un campo de entrada para darle valor a una etiquta del template
+Y que los datos de la etiquita se actualicen con el valor introducido en el input text
+cuando escribas en el input text con el evento keyup.
+
+<p>Código Postal del empleado: {{codigoPostal.value}}</p>
+
+Introduce el Código Postal: <input type="text" #codigoPostal (keyup)="0">
+
+
+
+
+
+
+
