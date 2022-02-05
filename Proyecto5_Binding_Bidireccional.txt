@@ -52,9 +52,9 @@ un input para poder modificar el valor del telefonoEmpresa
 Teléfono Empresa: <input type="text" [(ngModel)]="telefonoEmpresa" />
 
 
-Hay que importar el módulo donde tenemos ngModel
+Hay que importar el módulo para utilizar ngModel, en los inputs del formulario
 
-Para ello vamos al fichero: src/app/app.module.ts y añadimos: NgModule
+Para ello vamos al fichero: src/app/app.module.ts y añadimos: FormsModule
 
 import { FormsModule } from '@angular/forms';
 
