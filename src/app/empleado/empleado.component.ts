@@ -30,6 +30,15 @@ export class EmpleadoComponent implements OnInit {
   llamaDireccion(value:string){
   }
 
+
+  direccionEmpresa = "";
+
+  cambiarDireccionEmpresa (event:Event) {
+      this.direccionEmpresa = (<HTMLInputElement>event.target).value;
+  }
+      
+  telefonoEmpresa = "666123456";
+
   constructor() { }
 
   ngOnInit(): void {

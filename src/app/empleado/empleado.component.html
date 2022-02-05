@@ -24,3 +24,11 @@ Registrado: <input type="radio" name="registrado" value="si" id="registro" [chec
 
 No Registrado: <input type="radio" name="registrado" value="no" [checked]="usuarioNoRegistrado" (click)="setUsuarioRegistrado($event)"/><br/>
 
+<br/>{{direccionEmpresa}}<br/>
+
+Dirección Empresa: <input type="text" (input)="cambiarDireccionEmpresa($event)" /><br/>
+
+<br/>{{telefonoEmpresa}}<br/>
+
+Teléfono Empresa: <input type="text" [(ngModel)]="telefonoEmpresa" />
+

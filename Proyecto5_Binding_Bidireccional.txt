@@ -1,0 +1,66 @@
+
+1º Binding Bidireccional, primer ejemplo:
+
+Partimos del siguiente ejemplo
+tenemos un campo direccionEmpresa en la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+    direccionEmpresa = "";
+
+Y añadimos al template del Empleado (en empleado.component.html)
+un input para poder modificar el valor de la dirección
+asociado al evento 'input' y que llama a la función 'cambiarEmpresa' y le pasa el evento.
+
+{{direccionEmpresa}}<br/>
+
+Dirección Empresa: <input type="text" (input)="cambiarDireccionEmpresa($event)" />
+
+Y ahora añadimos en la Clase Empleado (en empleado.component.ts)
+el método que cambia el valor de direccionEmpresa
+
+export class EmpleadoComponent implements OnInit {
+
+    cambiarDireccionEmpresa (event:Event) {
+        this.direccionEmpresa = (<HTMLInputElement>event.target).value;
+    }
+    
+Todo esto va en una sola dirección, tenemos un Event Binding de forma que cuando escribimos
+en el input del template el valor se actualiza en el campo de la clase.
+Y el valor mostrado en la página es una mera interpolación {{direccionEmpresa}} del valor de la propiedad.
+
+Se demuestra además que si incialmente actualizásemos el valor de la propidad con:
+direccionEmpresa = "C/Laguna";
+en el input del template el valor mostrado es vacío
+es decir, el valor de la propiedad, no cambia el valor del campo del template
+
+*******************************************************************************
+
+AHORA empezamos a programar el Binding Bidireccional
+
+Partimos del siguiente ejemplo
+tenemos un campo telefonoEmpresa en la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+    telefonoEmpresa = "666123456";
+
+
+Y añadimos al template del Empleado (en empleado.component.html)
+un input para poder modificar el valor del telefonoEmpresa
+
+{{telefonoEmpresa}}<br/>
+
+Teléfono Empresa: <input type="text" [(ngModel)]="telefonoEmpresa" />
+
+
+Hay que importar el módulo donde tenemos ngModel
+
+Para ello vamos al fichero: src/app/app.module.ts y añadimos: NgModule
+
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    BrowserModule, FormsModule
+  ],
+
+
