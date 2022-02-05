@@ -1,0 +1,57 @@
+
+1º Property Binding, primer ejemplo:
+
+Añadimos una numeva propiedad a la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+  habilitacionCuadro = true;
+
+
+Y ahora modificamos el template del Empleado (en empleado.component.html)
+para crear el Binding de la propiedad:
+
+Introduce el Código Postal: <input type="text" #codigoPostal (keyup)="0" [disable]="habilitacionCuadro" />
+
+
+
+2º Property Binding, segundo ejemplo:
+
+Añadimos una numeva propiedad a la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+  usuarioRegistrado = false;
+
+Y modificamos el template del Empleado (en empleado.component.html)
+para crear el Binding de la propiedad:
+
+Registrado: <input type="checkbox" id="registro" [cheked]="usuarioRegistrado" />
+
+
+
+3º Property Binding, tercer ejemplo:
+
+Hacemos dinámico el ejemplo anterior:
+
+Añadimos un método a la Clase Empleado (en empleado.component.ts)
+para poder cambiar el valor de la propiedad:
+
+export class EmpleadoComponent implements OnInit {
+  
+getUsuarioRegistrado() {
+  usuarioRegistrado = true;
+}
+
+Y para probar el cambio del valor de la propiedad llamamos a la función 
+desde el template del Empleado (en empleado.component.html)
+
+Registrado: <input type="checkbox" id="registro" [cheked]="usuarioRegistrado" />
+
+{{getUsuarioRegistrado()}} .................. Se llamará durante el flujo!
+
+
+
+
+
+
+
+

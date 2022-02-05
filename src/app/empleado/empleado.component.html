@@ -16,5 +16,11 @@ Introduce la dirección: <input type="text" #direccion>
 
 Introduce el Código Postal: <input type="text" #codigoPostal (keyup)="0">
 
+<br/><br/>
 
+{{textoDeRegistro}}<br/>
+
+Registrado: <input type="radio" name="registrado" value="si" id="registro" [checked]="usuarioRegistrado" (click)="setUsuarioRegistrado($event)"/><br/>
+
+No Registrado: <input type="radio" name="registrado" value="no" [checked]="usuarioNoRegistrado" (click)="setUsuarioRegistrado($event)"/><br/>
 

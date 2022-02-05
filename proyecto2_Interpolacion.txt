@@ -38,6 +38,14 @@ Y ahora en el template:
 Y que los datos de la etiquita se actualicen con el valor introducido en el input text
 cuando hagas clic en el botón con el evento click.
 
+Definimos en empleado.component.ts:
+
+export class EmpleadoComponent implements OnInit {
+  llamaDireccion(value:string){
+}
+
+Y ahora en el template: 
+
 p>Direccción del empleado: {{direccion.value}}</p>
 
 Introduce la dirección: <input type="text" #direccion>

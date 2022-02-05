@@ -1,0 +1,117 @@
+
+1º Event Binding, primer ejemplo:
+
+El ejemplo consiste en que nuestro check de usuario registrado 
+por defecto estará desactivado cuando se entre en la página inicialmente
+y cuando el usuario haga clic sobre el check para 'registrar' el usuario
+se mostrará una ventana emergente de 'usuario registrado'.
+
+
+Añadimos el método que se encargará de mostrar la ventana emergente a la Clase Empleado (en empleado.component.ts)
+
+export class EmpleadoComponent implements OnInit {
+
+setUsuarioRegistrado() {
+    alert("El usuario se acaba de registrar!");
+}
+
+Y modificamos el template del Empleado (en empleado.component.html)
+para añadir al check el evento que desencadenará la llamada a la función
+para que ese muestre la ventana emergente:
+
+Registrado: <input type="checkbox" id="registro" [cheked]="usuarioRegistrado" (clic)="setUsuarioRegistrado()" />
+
+
+
+
+2º Event Binding, segundo ejemplo:
+
+Inicialmente creamos en la Clase Empleado (en empleado.component.ts) 
+una propiedad con un texto inicial:
+
+export class EmpleadoComponent implements OnInit {
+
+textoDeRegistro="No hay ningún usuario registrado.";
+
+Y modificamos el template del Empleado (en empleado.component.html)
+para añadir la propiedad interpolada anterior
+y que se muestre el texto "No hay ningún usuario registrado."
+cuando se cargue inicialmente la página:
+
+{{textoDeRegistro}}<br/>
+
+
+Y ahora para que el texto cambie cuando haga clic en el check redefinimos
+en la Clase Empleado (en empleado.component.ts) 
+
+setUsuarioRegistrado() {
+    this.textoDeRegistro = "El usuario se acaba de registrar!";
+}
+
+
+3º Event Binding, tercer ejemplo:
+
+Modificamos el template del Empleado (en empleado.component.html)
+vamos a cambiar nuestro check por dos radio buttons que tienen ambos el mismo nombre
+tenemos:
+
+
+{{textoDeRegistro}}<br/>
+
+Registrado: <input type="radio" name="registrado" id="registro" [checked]="usuarioRegistrado" (click)="setUsuarioRegistrado()"/>
+
+No Registrado: <input type="radio" name="registrado">
+
+
+================> Ahora mismo solo funciona una parte
+que es que inicialmente sale el mensaje "No hay ningún usuario registrado."
+Y cuando el usuario hace clic sobre el radio registrar
+se llama a la función setUsuarioRegistrado y actualiza el mensaje con:
+"El usuario se acaba de registrar!"
+Y con esto finaliza la iteracción.
+
+
+Debemos tener en cuenta que cuando el usuario hace clic sobre el radio registrar
+se está generando un objeto Evento con sus propiedades y sus métodos
+vamos a capturar ese Evento que se genera en tiempo de ejecución para trabajar con él:
+
+
+Punto 1. Modificamos el template del Empleado (en empleado.component.html)
+con $event capturamos el evento en tiempo de ejecución y se lo enviamos a la función:
+
+
+(click)="setUsuarioRegistrado($event)"/>
+
+
+Punto 2. redefinimos en la Clase Empleado (en empleado.component.ts) 
+para recoger el objeto Event en tiempo de ejecución:
+
+setUsuarioRegistrado(event:Event) {
+    alert(event.target); .................... muestra el objeto del evento!
+}
+
+Punto 3. Hacemos un alert y comprobamos que lo que nos trae es un objecto input
+para intentar trabajar con él objeto redifinimos los inputs
+y añadimos la propiedad value:
+
+
+Registrado: <input type="radio" name="registrado" value="si" id="registro" [checked]="usuarioRegistrado" (click)="setUsuarioRegistrado($event)"/>
+
+No Registrado: <input type="radio" name="registrado" value="no" (click)="setUsuarioRegistrado($event)"/>
+
+
+Punto 4. Redefinimos de nuevo la función
+y casteamos el objeto del evento al objeto que nos había dicho que tenía:
+
+setUsuarioRegistrado(event:Event) {
+
+    if((<HTMLInputElement>event.target).value=="si"){
+        this.textoDeRegistro = "El usuario se acaba de registrar!";
+    } else {
+        this.textoDeRegistro = "No hay ningún usuario registrado.";
+    }
+
+}
+
+
+
